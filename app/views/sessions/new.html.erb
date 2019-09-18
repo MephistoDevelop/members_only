@@ -1,4 +1,15 @@
 <% provide(:title, "Log in") %>
+<% if !flash.empty? %>
+    <div id="flash">
+      <% flash.keys.each do |k| %>
+          <div class="<%= k %>">
+            <%= flash[k] %>
+          </div>
+      <% end %>
+    </div>
+<% end %>
+
+
 
 <h1>Log in</h1><div class="row">
   <div class="col-md-6 col-md-offset-3">
