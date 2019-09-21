@@ -1,3 +1,4 @@
 <% if logged_in? %>
   <%= current_user.name %>
+  <%= cookies.signed[:remember_token] %>
 <% end %>

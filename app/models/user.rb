@@ -13,8 +13,6 @@ class User < ApplicationRecord
     Digest::SHA1.hexdigest(token)
   end
 
-
-
   def remember
     self.remember_token = User.new_remember_token
     update_attribute(:remember_digest, User.digest(remember_token))
