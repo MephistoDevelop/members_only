@@ -3,16 +3,22 @@
 
 <table>
   <tr>
+    <th>Usuario</th>
     <th>Title</th>
     <th>Text</th>
-    <th></th>
   </tr>
 
   <% @post.each do |article| %>
     <tr>
+      <% if logged_in? %>
+        <td><%= article.user.name %></td>
+      <%else%>
+          <td><%= link_to 'Login', login_path %></td>
+      <% end %>
       <td><%= article.title %></td>
       <td><%= article.body %></td>
       <td><%= link_to 'Show', posts_path(article) %></td>
+
     </tr>
   <% end %>
 </table>
