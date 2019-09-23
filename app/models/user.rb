@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :name,presence:true
   validates :email,presence:true, uniqueness: true
   has_secure_password
+  has_many :post
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -32,11 +33,8 @@ class User < ApplicationRecord
   def decrypt(token)
 
     return false if token.nil?
-
     remember = Digest::SHA1.hexdigest(token)
-
     remember_digest == remember
-
   end
 
 

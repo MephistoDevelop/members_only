@@ -1,0 +1,16 @@
+<% if !flash.empty? %>
+    <div id="flash">
+      <% flash.keys.each do |k| %>
+          <div class="<%= k %>">
+            <%= flash[k] %>
+          </div>
+      <% end %>
+    </div>
+<% end %>
+<%=form_for @post do |f| %>
+  <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+    <%= f.submit "Save Post" %>
+<% end %>
