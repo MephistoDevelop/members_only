@@ -5,20 +5,24 @@ class PostsController < ApplicationController
   def index
     @post = Post.all
   end
+
   def create
-    @post=Post.new(post_params)
+    @post = Post.new(post_params)
+
     if @post.save
-     # redirect_to @post
-      flash.now[:invalid]="No se puede Guardar el post"
+      redirect_to root_path
     else
-      flash.now[:invalid]="No se puede Guardar el post"
+      flash[:danger] = 'Post NOT created'
     end
   end
+
   def show
     @post = Post.find(params[:id])
   end
 
+  private
+
   def post_params
-    params.require(:post).permit :title,:body
+    params.require(:post).permit(:title,:body)
   end
 end

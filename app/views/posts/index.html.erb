@@ -1,18 +1,18 @@
-<% if !flash.empty? %>
-    <div id="flash">
-      <% flash.keys.each do |k| %>
-          <div class="<%= k %>">
-            <%= flash[k] %>
-          </div>
-      <% end %>
-    </div>
-<% end %>
-<%@post.each do |item| %>
-    Post_id:<%= item.id%>
-    User_id: <%= item.user_id %>
-    *************************************
-    Title: <%= item.title %>
-    Body: <%= item.title %>
-    <br>
 
-<% end %>
+<h1>Listing articles</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+
+  <% @post.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.body %></td>
+      <td><%= link_to 'Show', posts_path(article) %></td>
+    </tr>
+  <% end %>
+</table>

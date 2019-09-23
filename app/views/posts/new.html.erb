@@ -7,10 +7,10 @@
       <% end %>
     </div>
 <% end %>
-<%=form_for @post do |f| %>
+<%= form_for @post do |f| %>
   <%= f.label :title %>
     <%= f.text_field :title %>
     <%= f.label :body %>
-    <%= f.text_field :body %>
+    <%= f.text_area :body %>
     <%= f.submit "Save Post" %>
 <% end %>
