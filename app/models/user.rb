@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :name,presence:true
   validates :email,presence:true, uniqueness: true
   has_secure_password
-  has_many :post
+  has_many :posts
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
