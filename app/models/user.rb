@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   attr_accessor :remember_token
   before_create :create_remember_token
-  validates :name,presence:true
-  validates :email,presence:true, uniqueness: true
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
   has_secure_password
   has_many :posts
 
-  def User.new_remember_token
+  def self.new_remember_token
     SecureRandom.urlsafe_base64
   end
 
-  def User.digest(token)
+  def self.digest(token)
     Digest::SHA1.hexdigest(token)
   end
 
@@ -28,14 +30,10 @@ class User < ApplicationRecord
     self.remember_digest = User.digest(remember_token)
   end
 
-
-
   def decrypt(token)
-
     return false if token.nil?
+
     remember = Digest::SHA1.hexdigest(token)
     remember_digest == remember
   end
-
-
 end

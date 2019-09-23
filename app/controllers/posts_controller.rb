@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   def new
-    @post= Post.new
+    @post = Post.new
   end
+
   def index
     @post = Post.all
   end
@@ -23,6 +26,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:body)
+    params.require(:post).permit(:title, :body)
   end
 end
