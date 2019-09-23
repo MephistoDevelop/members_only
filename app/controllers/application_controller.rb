@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return nil unless cookies.signed[:user_id]
-    @current_user ||= User.find_by(id: cookies.signed[:user_id])
+
+    @current_user||=User.find_by(id: cookies.signed[:user_id])
   end
 end
