@@ -5,10 +5,16 @@ module SessionsHelper
   end
 
   def current_user
+    user ||=  User.find_by(id: cookies.signed[:user_id])
+
+    if user && user.decrypt(cookies.signed[:remember])
+      log_in(user)
+    end
+      @current_user = user
     #if (user_id = session[:user_id])
      # @current_user ||= User.find_by(id: user_id)
     #elsif cookies[:remember_token]
-    @current_user=User.find_by(id: cookies.signed[:user_id])
+    ##TSE changes @current_user=User.find_by(id: cookies.signed[:user_id])
     #end
   end
 

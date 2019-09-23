@@ -26,4 +26,18 @@ class User < ApplicationRecord
     self.remember_token = User.new_remember_token
     self.remember_digest = User.digest(remember_token)
   end
+
+
+
+  def decrypt(token)
+
+    return false if token.nil?
+
+    remember = Digest::SHA1.hexdigest(token)
+
+    remember_digest == remember
+
+  end
+
+
 end
