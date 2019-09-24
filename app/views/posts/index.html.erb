@@ -10,14 +10,10 @@
 
   <% @post.each do |article| %>
     <tr>
-      <% if logged_in? %>
-        <td><%= article.user.name %></td>
-      <%else%>
-          <td><%= link_to 'Login', login_path %></td>
-      <% end %>
+      <td><%= user_in(article) %></td>
       <td><%= article.title %></td>
       <td><%= article.body %></td>
-      <td><%= link_to 'Show', posts_path(article) %></td>
+      <td><%= link_to 'Show', post_path(article) %></td>
     </tr>
   <% end %>
 </table>

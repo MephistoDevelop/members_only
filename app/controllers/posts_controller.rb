@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :signed_in_only!, only: %i[new create]
+
   def new
     @post = Post.new
   end
@@ -21,6 +23,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def signed_in_only!
+    redirect_to sign_in_path unless logged_in?
   end
 
   private
