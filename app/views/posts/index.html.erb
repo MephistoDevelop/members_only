@@ -1,0 +1,19 @@
+
+<h1>SECRET POSTS</h1>
+
+<table>
+  <tr>
+    <th>Usuario</th>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @post.each do |article| %>
+    <tr>
+      <td><%= user_in(article) %></td>
+      <td><%= article.title %></td>
+      <td><%= article.body %></td>
+      <td><%= link_to 'Show', post_path(article) %></td>
+    </tr>
+  <% end %>
+</table>
