@@ -8,7 +8,7 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'bcrypt', '3.1.12'
 gem 'pg', '~> 1.1', '>= 1.1.4', group: :production
